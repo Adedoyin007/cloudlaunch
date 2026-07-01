@@ -1,0 +1,109 @@
+📄 2. TECHNICAL REPORT 
+
+📌 Title
+
+CloudLaunch: Highly Available Web Application on AWS
+
+⸻
+
+1. Introduction
+
+The objective of this project was to redesign a single-server web application into a highly available and scalable cloud architecture using AWS services.
+
+The original system suffered from downtime during high traffic. This project solves that by introducing redundancy, load balancing, and managed services.
+
+⸻
+
+1. Architecture Design
+
+The architecture consists of:
+
+* Application Load Balancer (ALB)
+* Auto Scaling Group (ASG) with multiple EC2 instances
+* Amazon RDS (MySQL) in private subnet
+* Amazon S3 for storage
+* Custom VPC for network isolation
+
+Traffic flows from users → ALB → EC2 → RDS.
+
+This ensures:
+
+* High availability
+* Fault tolerance
+* Scalability
+
+⸻
+
+1. Security Considerations
+
+Several best practices were implemented:
+
+🔐 Network Security
+
+* RDS deployed in private subnet
+* No direct public access to database
+* Security Groups restrict traffic
+
+🔐 Access Control
+
+* IAM roles and policies follow least privilege
+* Users only allowed required permissions
+
+🔐 Data Protection
+
+* S3 versioning enabled
+* Controlled access to storage resources
+
+⸻
+
+1. Challenges Encountered
+
+❌ MySQL Installation Issue
+
+* Error: Unable to locate package mysql
+* Solution: Installed mysql-client instead
+
+❌ RDS Connectivity
+
+* Initial connection failed
+* Fixed by:
+    * Correct Security Group configuration
+    * Allowing EC2 → RDS access on port 3306
+
+❌ Network Configuration
+
+* Ensuring correct routing between subnets
+* Proper association of route tables
+
+⸻
+
+1. Lessons Learned
+
+* Importance of Security Groups and networking
+* Difference between public and private subnets
+* Using managed services (RDS, S3) simplifies operations
+* High availability requires redundancy and load balancing
+
+⸻
+
+1. Conclusion
+
+The project successfully transformed a basic web application into a robust, scalable, and highly available cloud solution.
+
+The architecture ensures:
+
+* Continuous availability
+* Efficient traffic handling
+* Secure data management
+
+This implementation aligns with AWS best practices and modern cloud design principles.
+
+⸻
+
+✅ Final Status
+
+* Architecture deployed successfully
+* Application accessible via ALB
+* All requirements completed
+
+⸻
